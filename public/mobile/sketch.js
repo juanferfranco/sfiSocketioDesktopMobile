@@ -6,9 +6,6 @@ const threshold = 5;
 function setup() {
     createCanvas(300, 400);
     background(220);
-
-    // Conectar al servidor de Socket.IO
-    //let socketUrl = 'http://localhost:3000';
     socket = io();
 
     socket.on('connect', () => {
@@ -47,7 +44,7 @@ function touchMoved() {
                 x: mouseX,
                 y: mouseY
             };
-            socket.emit('message', JSON.stringify(touchData));
+            socket.emit('message', touchData);
 
             lastTouchX = mouseX;
             lastTouchY = mouseY;
